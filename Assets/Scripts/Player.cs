@@ -5,10 +5,14 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float speed;
+    public GameObject[] weapons;
+    public bool[] hasWeapons;
     float hAxis;
     float vAxis;
+
     bool wDown;
     bool jDown;
+    bool iDown;
 
     bool isJump;
     bool isDodge;
@@ -18,6 +22,8 @@ public class Player : MonoBehaviour
 
     Rigidbody rigid;
     Animator anim;
+
+    GameObject nearObject;
 
     void Awake()
     {
@@ -32,6 +38,7 @@ public class Player : MonoBehaviour
         Turn();
         Jump();
         Dodge();
+        Interation();
     }
 
     void GetInput()
@@ -40,6 +47,7 @@ public class Player : MonoBehaviour
         vAxis = Input.GetAxisRaw("Vertical");
         wDown = Input.GetButton("Walk");
         jDown = Input.GetButtonDown("Jump");
+        iDown = Input.GetButtonDown("Interation");
     }
 
     void Move()
@@ -50,7 +58,6 @@ public class Player : MonoBehaviour
              moveVec = dodgeVec;
 
         transform.position += moveVec * speed * (wDown ? 0.3f : 1f) * Time.deltaTime;
-        //transform
 
         anim.SetBool("isRun", moveVec != Vector3.zero);
         anim.SetBool("isWalk", wDown);
@@ -73,11 +80,10 @@ public class Player : MonoBehaviour
 
     void Dodge()
     {
-        if (jDown && moveVec != Vector3.zero && !isJump && !isDodge)
-        {
+        if (jDown && moveVec != Vector3.zero && !isJump && !isDodge) {
             dodgeVec = moveVec;
             speed *= 2;
-            anim.SetTrigger("doJump");
+            anim.SetTrigger("doDodge");
             isDodge = true;
 
             Invoke("DodgeOut", 0.5f);
@@ -87,7 +93,20 @@ public class Player : MonoBehaviour
     void DodgeOut()
     {
         speed *= 0.5f;
-        isJump = false;
+        isDodge = false;
+    }
+
+    void Interation()
+    {
+        if(iDown && nearObject != null && !isJump && !isDodge) {
+            if(nearObject.tag == "Weapon") {
+                Item itme = nearObject.GetComponent<Item>();
+                int weaponIndex = Item.value;
+                hasWeapons[weaponIndex] = true;
+
+                Destroy(nearObject);
+            }
+        }
     }
     void OnCollisionEnter(Collision collision)
     {
@@ -96,4 +115,12 @@ public class Player : MonoBehaviour
             isJump = false;
         }
     }
-}
+
+    void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "weapon")
+            nearObject = other.gameObject;
+
+        Debug.Log(nearObject.name);
+    }
+    
