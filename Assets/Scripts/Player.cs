@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEditor.Progress;
 
@@ -9,16 +10,17 @@ public class Player : MonoBehaviour
     public float speed;
     public GameObject[] weapons;
     public bool[] hasWeapons;
+    public GameObject[] grenades;
+    public int hasGrenades;
 
     public int ammo;
     public int coin;
     public int health;
-    public int hasGrenades;
 
-    public int maxammo;
-    public int maxcoin;
-    public int maxhealth;
-    public int maxhasGrenades;
+    public int maxAmmo;
+    public int maxCoin;
+    public int maxHealth;
+    public int maxHasGrenades;
 
     float hAxis;
     float vAxis;
@@ -44,13 +46,13 @@ public class Player : MonoBehaviour
     GameObject equipWeapon;
     int equipWeaponIndex = -1;
 
-    void Awake()
+    void Awake() // 시작시 한 번 호출되는 함수
     {
         rigid = GetComponent<Rigidbody>();
         anim = GetComponentInChildren<Animator>();
     }
 
-    void Update()
+    void Update() // 매 프레임마다 호출되는 함수
     {
         GetInput();
         Move();
@@ -184,6 +186,38 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Floor") {
             anim.SetBool("isJump", false);
             isJump = false;
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.tag =="Item") {
+            Item item = other.GetComponent<Item>();
+            switch(item.type) {
+                case Item.Type.Ammo:
+                    ammo += item.value;
+                    if (ammo > maxAmmo)
+                        ammo = maxAmmo;
+                    break;
+                case Item.Type.Coin:
+                    coin += item.value;
+                    if (coin > maxCoin)
+                        coin = maxCoin;
+                    break;
+                case Item.Type.Heart:
+                    health += item.value;
+                    if (health > maxHealth)
+                        health = maxHealth;
+                    break;
+                case Item.Type.Grenade:
+                    grenades[hasGrenades].SetActive(true);
+                    hasGrenades += item.value;
+                    if (hasGrenades > maxHasGrenades)
+                        hasGrenades = maxHasGrenades;
+
+                    break;
+            }
+            Destroy(other.gameObject);
         }
     }
 
