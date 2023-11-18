@@ -1,0 +1,332 @@
+From 508da1ba8bcac62dc7991b7b72d316aa1a277199 Mon Sep 17 00:00:00 2001
+From: "DESKTOP-SE0LK9J\\Noire" <NoireNicare@gmail.com>
+Date: Sat, 18 Nov 2023 19:26:42 +0900
+Subject: [PATCH] 231118
+
+---
+ .vs/Cproject/v17/.suo                         | Bin 718336 -> 717312 bytes
+ Assembly-CSharp.csproj                        |   5 +-
+ Assets/Scripts/Player.cs                      |  10 ++++
+ ...hadercompiler-UnityShaderCompiler.exe0.log |   1 -
+ UserSettings/Layouts/default-2022.dwlt        |  56 +++++++++---------
+ ...mbly-CSharp.csproj.AssemblyReference.cache | Bin 123687 -> 123687 bytes
+ 6 files changed, 40 insertions(+), 32 deletions(-)
+
+diff --git a/.vs/Cproject/v17/.suo b/.vs/Cproject/v17/.suo
+index aca2e5c9a76e942ac59e060c695cac911784e2b1..09556b00c1883945a9562a893c084c27579a007c 100644
+GIT binary patch
+delta 2501
+zcmeH{ZERCj7{_}~Z|`nz@5b0V*`Vx=@+R$QH|RDTQnn#ZVNAjY69(>$I&r9jjlon_
+z2$@6^m7d5o#zY`+V*(#=S9_-+I$;{3GfX5zh=LkJOjw94O$Y>5|EKh_CVaufkDm0`
+z^PK0r-t&K+6CPU-{&T^*z9NfRGA$MxYyu|Y@i=#LdpFxHXFG}2Vwr<h4wwgAKtEKs
+zk3?vPJi34HPW$vr<WY;hoxVwkgAt)%gNPwmCoZ9Of+;`&+pvp_n)hX)egtHIso*Yr
+z>8N=hFEdkY-q($}+&{q%3EAW>>s&vr&mv5YFTwbQzz6)G6qJEQU@-`Qa!>&(!4mKo
+zr~*sD<6s#Gg5{tZ)PP#B0z3g$f+s;8c#0qUX&9@(YETbYg~Kg8%Z(;SZr^h-nm{vX
+z0j;17Yyu(hJZJ|mfX(1V&;ho9m%z*570?N`f^DD+bc5}n2kZblK`(d}yarweyDS#F
+zr4L3JM8qxjnn|I=2<dac&99Z~Z5Go`L!TX((wY5SIxd4L-3+u%>88Wx^ZA;*m~!81
+z#p4LE`_jV4jtTbvMSKVm#d{*MA~{>nlm`Wgi^DIKP0e((SjO3O!Xuw2<)nAY`G**$
+z$EGTDAgh)tvoU#Y$^r*ONnksitCV~=dFm%up2vcXf_}#-kb&v7MB&+;H`(iET{G6C
+zCxXMB;uU#Pwi9-{ppKoUe%4jEj-AQ(uo$nYhk7k+dr>_bral`&%ObE_GtWw9^7D_>
+zWBCdpQJr{ds8WO>^HWx5T_vN6H|e;40bL6RnWt)J;f)`94&L0h>Gy9&{I}12^l9(f
+zUyt6H{a$XTcYN*qvcVs(s>{b^r+(2lmkhXuiIR<V%;$;k>@Xig`1Sa#6-40=TOpX-
+zY4$paH+V@*;rSo{6!uK<Vl^sBtMu@^J%rKRYK3PNfAq}Zq?vW+)~6GGM;R%87Rzl=
+z_#mD}=3v&9*Pu*EI!tG7${8&LJ5#_v1W$B~MCR168rM=5o-?fQY@U^}oElEZJa^yW
+zQi{QQNn;BHXa#K`1o$4ClQp+_*^<)kOtE?2R<!wXc-ZiEPqKd++WU7GMgm6!C*nix
+z7?yMOp+JyC^3Oad_2J_G_&8>an#U<f9;eD9lzK{i%vaU@FCyi^ufYA`7jd0VC;Y4V
+z*Yf&ag1SZ@2rFAcGX2)doAyF(rWR8{D^zU4^+A}wtpl~lHh!t@)TO&}8Wf%i#VJmi
+zr!fyw%$!(Hsk&lZ&eTuTwOQG5L1E$b;mF3YegEgjKDm;2i3C)C4_U?<H@fw)jn1R$
+zPzjByndLN#ebDP-C*HZL4y{hhQZv@1xzsQvk|q$Up4%Yqi&F7AF)AeSpu-5}h-<BH
+zwC53{J&(SBSSztn?Iab{U@Hk5;b9skiAZ!zSaB^t5G?BQZ)u)-{i`&$n(4PG>QF1m
+zQZK(neTk;g^jF$ut9FJ`EnuVlBluah5urnE2$3OUXo)RI)N>1M$JOxn)R}18)IZuu
+zuhCm=>;GCiB~eWfX}=_DQd%tfh5R8=4+e=xomg$F(C(y(+DTbbi+$wd13N^Q@%Etn
+zB{BBY+jf1{e@f~<WhYUCd?!oPUAd{Ow9H=-@>Z0GTD*%Ew^e#8{r+-qU{QH<c_7ph
+zDhv1x@38!nO*=1BZ3J8Zqp}$NMJ85*T$JNfyDZb_&oUtfxgy5}wRv1FFbaN?FVMn-
+rO36Q-<~%=njXO#dHRr5+EqYx(LiHnoMxu?&RIe^|62o~-9;5#N9m^p-
+
+delta 3330
+zcmeI#drTBZ90%~5xxEMLo*c;A15X4&xI0lEilxfSH^oyC+lna9VoHU`0b)!6W03SE
+z+%#@%lcqIx+ZaQvm$1gPh8SY4!AeqX)ikw#_)iUOHKkgOLcepca`un5{?#;b!Y8x)
+zo0;9Yo!#Fq9XC@uMpApyR#Dw#vFdaJHVKT4kB{@H9#X*pooFEFycKmhY=<i7#2_2m
+zeIbr+;-&RsPuF`lu0&oZHN@9K-ylR{M408q5ywSzGlB)CK?v}8#AF?cIt;=g7+MTE
+zT@dQssQHv0@y;lbi1l{n82J99&pOxnPkZ9>)M<@g(k`JB@4yFYg>Rb>Hv^9aPK2M3
+zPlTV8Ph>jalKA`azI-CQ)=KQ;K0k*xL9GpS@4>{W`5lqyN$ET_^B>Rqun=nk8=Zd1
+zqH_ftbs`#k`CoMNjfP0n8&N3PF+M5asD}izz;;IzN&GZ(ry7!3ZmHmV7$FdE=x(C=
+z+CmQyZ%U!WSB`h(g`c0)u;!Fvi$BJ%fEH(?DQ;;70{pT*4ti4E5?@pv;DsN-;J<l%
+z_aoO5i7#gK69b~xS;#y@;sT=5eC*WWR^sJk!XROV!D-CnvN5ae6gwZ|@QvCe!a7`5
+zW{pX=5Z+x|4gWRs#FVgA!45VWQ({g;qc#;<OIXXyVu>#mUs5e@z!K{O-~Ct<Jvq0K
+z_^;LMfOh6dDlzl>K^q|PJC#2iym(y&7Q*i!?Y5nmgKOA-oH=OFhRGfN)tKMSHpFGf
+z{YG<<uOoRMVbpf+@z26qkhlUWIWdmkn%Y?Au@6fLlYyz=>{DWTmLolL?~020CYBZ7
+zU@uKQ9$WjqUG%2(ZEw1h#!7$AG!y66ua9lJbE)~0`mf}?5i!hnEk21H$*1iEKb?Xe
+z1mKs#2qrK?5Qs1hB(T7A2nH*JKq$<BFbIbTh=eGJh8UO$Hi(5dm<4u&u3a}98}Tp)
+z5+D)gLJ}myJV=35aDWqBFdx!j0W5@c$bd}9f<>?xvSA542RZOOEQMu|YiQT$^01K)
+z1yBgfVFj#&Rj?Y?z*;DR7oZr{fg9Gt2G|HCun9_GGrR~d!OO4(%78x(<*2v844zPX
+zJHwo>V23Yi9qJwM>g0Ys>YbC@4X7JothY1LI&<<)XhR^%e~>6|#!>a?EwPOB-x4np
+zQtQoh$OnHEjnCHjf4aso0c*_jV{d1aH^;#o@oi7{kbC1De@zkveTm2R*S;2KE%KdC
+zN#4Bp`@7{|l=f{t>b_WI|87nGl_!$K$r9v5J0_r|pNRw)>6Z8lB_6bVWaO_NqmDg@
+zUj4Ue8A+e#w#0y;|CF1T-wU$xl*>=06>lgqFMlWV_cjmu-#5wFQCVB)8VljEz&8sU
+z4RuSrJ@6IDJTum@g5U+_JTx4Ji64Jr<!$op(fLmwo$WjyR|8*1t?=)$r%jh3tr#>5
+zOUu*c9vJg|wDL_o^K5yme~5O_AZ9Nwaz$JxS@MErvW%6LCHO|l!ai06LfP5<ee%Fs
+zQ>Z%7qR)L>?zu{8*>JabpwUazMlbD2Qa-1Ga+*>cbCgUQLrxzDLD0#aABydA&rMT|
+zY(Hp<Qct8A+<JNWh-g)<=jm;toTIdB2!DEINT^q`41$tl5ahu+<8is;OB$vQEHUI7
+zltRN9MKDtN$a>RVmUGy~dRklL4>p?KWxsUW4lFhr)x}2B`QMa>CZl|0GqtPs2d2Fw
+zx@y;sMo&}O&YITBn!1XX9SzO9n*1@@enCvNhZonh=4%Zb{SB_FCbD$JlCn)ZcX-+q
+ze4fhjF7oN27Nbpl=MU2vqV6j)ysmZ)nw7zzF~w}A&TxDP@sGNMMb*{mRkfK}&Wh^l
+zN@qrPRkkxbqq5RjU6Ykwy>L-wb#_gK>KqimF%VTHXGJqrgNDR=M7bbR<(z0#u8Oq(
+z2ayn!TocD>|F<I1tK^0_E+G255Z!>2OqBS6Zfx++D*oxIm-DE(U3OD*BmNih<)wua
+vHSAY$g!=N+!m#<1*h7T<_|HPF9~7f}0~wZpH={BlQZ}5{rFPvG_mDpUX~$tU
+
+diff --git a/Assembly-CSharp.csproj b/Assembly-CSharp.csproj
+index 1f3cb11..700fc55 100644
+--- a/Assembly-CSharp.csproj
++++ b/Assembly-CSharp.csproj
+@@ -8,8 +8,7 @@
+     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+     <ProductVersion>10.0.20506</ProductVersion>
+     <SchemaVersion>2.0</SchemaVersion>
+-    <RootNamespace>
+-    </RootNamespace>
++    <RootNamespace></RootNamespace>
+     <ProjectGuid>{98E6A1CE-1D2C-E356-327C-90158F433A8E}</ProjectGuid>
+     <OutputType>Library</OutputType>
+     <AppDesignerFolder>Properties</AppDesignerFolder>
+@@ -770,4 +769,4 @@
+   <Target Name="AfterBuild">
+   </Target>
+   -->
+-</Project>
+\ No newline at end of file
++</Project>
+diff --git a/Assets/Scripts/Player.cs b/Assets/Scripts/Player.cs
+index faa4353..b70b7bf 100644
+--- a/Assets/Scripts/Player.cs
++++ b/Assets/Scripts/Player.cs
+@@ -10,6 +10,16 @@ public class Player : MonoBehaviour
+     public GameObject[] weapons;
+     public bool[] hasWeapons;
+ 
++    public int ammo;
++    public int coin;
++    public int health;
++    public int hasGrenades;
++
++    public int maxammo;
++    public int maxcoin;
++    public int maxhealth;
++    public int maxhasGrenades;
++
+     float hAxis;
+     float vAxis;
+ 
+diff --git a/Logs/shadercompiler-UnityShaderCompiler.exe0.log b/Logs/shadercompiler-UnityShaderCompiler.exe0.log
+index 96476ef..641b5bc 100644
+--- a/Logs/shadercompiler-UnityShaderCompiler.exe0.log
++++ b/Logs/shadercompiler-UnityShaderCompiler.exe0.log
+@@ -1,4 +1,3 @@
+ Base path: 'E:/Program Files (x86)/Unity/Hub/Editor/2022.3.5f1/Editor/Data', plugins path 'E:/Program Files (x86)/Unity/Hub/Editor/2022.3.5f1/Editor/Data/PlaybackEngines'
+ Cmd: initializeCompiler
+ 
+-Cmd: shutdown
+diff --git a/UserSettings/Layouts/default-2022.dwlt b/UserSettings/Layouts/default-2022.dwlt
+index 5c89033..5df2bf3 100644
+--- a/UserSettings/Layouts/default-2022.dwlt
++++ b/UserSettings/Layouts/default-2022.dwlt
+@@ -14,12 +14,12 @@ MonoBehaviour:
+   m_EditorClassIdentifier: 
+   m_PixelRect:
+     serializedVersion: 2
+-    x: 886
++    x: 992
+     y: 51
+     width: 920
+     height: 973
+   m_ShowMode: 4
+-  m_Title: Game
++  m_Title: Hierarchy
+   m_RootView: {fileID: 6}
+   m_MinSize: {x: 875, y: 300}
+   m_MaxSize: {x: 10000, y: 10000}
+@@ -43,8 +43,8 @@ MonoBehaviour:
+     y: 0
+     width: 185
+     height: 923
+-  m_MinSize: {x: 200, y: 200}
+-  m_MaxSize: {x: 4000, y: 4000}
++  m_MinSize: {x: 201, y: 221}
++  m_MaxSize: {x: 4001, y: 4021}
+   m_ActualView: {fileID: 15}
+   m_Panes:
+   - {fileID: 15}
+@@ -75,7 +75,7 @@ MonoBehaviour:
+   m_MinSize: {x: 300, y: 100}
+   m_MaxSize: {x: 24288, y: 16192}
+   vertical: 0
+-  controlID: 46
++  controlID: 78
+ --- !u!114 &4
+ MonoBehaviour:
+   m_ObjectHideFlags: 52
+@@ -95,8 +95,8 @@ MonoBehaviour:
+     y: 0
+     width: 326
+     height: 923
+-  m_MinSize: {x: 275, y: 50}
+-  m_MaxSize: {x: 4000, y: 4000}
++  m_MinSize: {x: 276, y: 71}
++  m_MaxSize: {x: 4001, y: 4021}
+   m_ActualView: {fileID: 14}
+   m_Panes:
+   - {fileID: 14}
+@@ -118,11 +118,11 @@ MonoBehaviour:
+   m_Position:
+     serializedVersion: 2
+     x: 0
+-    y: 676
++    y: 675
+     width: 409
+-    height: 247
+-  m_MinSize: {x: 100, y: 100}
+-  m_MaxSize: {x: 4000, y: 4000}
++    height: 248
++  m_MinSize: {x: 102, y: 121}
++  m_MaxSize: {x: 4002, y: 4021}
+   m_ActualView: {fileID: 18}
+   m_Panes:
+   - {fileID: 13}
+@@ -224,7 +224,7 @@ MonoBehaviour:
+   m_MinSize: {x: 100, y: 100}
+   m_MaxSize: {x: 8096, y: 16192}
+   vertical: 1
+-  controlID: 47
++  controlID: 38
+ --- !u!114 &10
+ MonoBehaviour:
+   m_ObjectHideFlags: 52
+@@ -243,7 +243,7 @@ MonoBehaviour:
+     x: 0
+     y: 0
+     width: 409
+-    height: 676
++    height: 675
+   m_MinSize: {x: 202, y: 221}
+   m_MaxSize: {x: 4002, y: 4021}
+   m_ActualView: {fileID: 16}
+@@ -420,7 +420,7 @@ MonoBehaviour:
+     scrollPos: {x: 0, y: 113}
+     m_SelectedIDs: 1a5c0000
+     m_LastClickedID: 23578
+-    m_ExpandedIDs: 00000000f05b0000f25b000000ca9a3b
++    m_ExpandedIDs: 
+     m_RenameOverlay:
+       m_UserAcceptedRename: 0
+       m_Name: 
+@@ -448,7 +448,7 @@ MonoBehaviour:
+     scrollPos: {x: 0, y: 0}
+     m_SelectedIDs: 
+     m_LastClickedID: 0
+-    m_ExpandedIDs: 00000000f05b0000f25b0000
++    m_ExpandedIDs: 
+     m_RenameOverlay:
+       m_UserAcceptedRename: 0
+       m_Name: 
+@@ -524,7 +524,7 @@ MonoBehaviour:
+     m_Tooltip: 
+   m_Pos:
+     serializedVersion: 2
+-    x: 1480
++    x: 1586
+     y: 81
+     width: 325
+     height: 902
+@@ -571,7 +571,7 @@ MonoBehaviour:
+     m_Tooltip: 
+   m_Pos:
+     serializedVersion: 2
+-    x: 886
++    x: 992
+     y: 81
+     width: 184
+     height: 902
+@@ -588,8 +588,8 @@ MonoBehaviour:
+   m_SceneHierarchy:
+     m_TreeViewState:
+       scrollPos: {x: 0, y: 0}
+-      m_SelectedIDs: ae590000
+-      m_LastClickedID: 22958
++      m_SelectedIDs: 20fbffff
++      m_LastClickedID: -1248
+       m_ExpandedIDs: 2afbffff
+       m_RenameOverlay:
+         m_UserAcceptedRename: 0
+@@ -634,10 +634,10 @@ MonoBehaviour:
+     m_Tooltip: 
+   m_Pos:
+     serializedVersion: 2
+-    x: 1071
++    x: 1177
+     y: 81
+     width: 407
+-    height: 655
++    height: 654
+   m_SerializedDataModeController:
+     m_DataMode: 0
+     m_PreferredDataMode: 0
+@@ -944,9 +944,9 @@ MonoBehaviour:
+   m_PlayAudio: 0
+   m_AudioPlay: 0
+   m_Position:
+-    m_Target: {x: 0.094576836, y: 2.1133623, z: 0.18672895}
++    m_Target: {x: 0, y: 1, z: -10}
+     speed: 2
+-    m_Value: {x: 0.094576836, y: 2.1133623, z: 0.18672895}
++    m_Value: {x: 0, y: 1.0000004, z: -9.999998}
+   m_RenderMode: 0
+   m_CameraMode:
+     drawMode: 0
+@@ -996,9 +996,9 @@ MonoBehaviour:
+     speed: 2
+     m_Value: {x: -0.12663603, y: 0.8684672, z: -0.2858743, w: -0.38471276}
+   m_Size:
+-    m_Target: 3.2243223
++    m_Target: 12.124355
+     speed: 2
+-    m_Value: 3.2243223
++    m_Value: 12.124353
+   m_Ortho:
+     m_Target: 0
+     speed: 2
+@@ -1141,10 +1141,10 @@ MonoBehaviour:
+     m_Tooltip: 
+   m_Pos:
+     serializedVersion: 2
+-    x: 1071
+-    y: 757
++    x: 1177
++    y: 756
+     width: 407
+-    height: 226
++    height: 227
+   m_SerializedDataModeController:
+     m_DataMode: 0
+     m_PreferredDataMode: 0
+diff --git a/obj/Debug/Assembly-CSharp.csproj.AssemblyReference.cache b/obj/Debug/Assembly-CSharp.csproj.AssemblyReference.cache
+index 8bcb0de78c8075aaef922e28b847f66c0a0c4f3d..d0be82fa0e9e8bcca7843192773e051499849f20 100644
+GIT binary patch
+delta 396
+zcmX|+JxBvV6oeVjmlOwfF+~tOV=Ppxti(dJ5D`tK2x15-7AXRPje?$)tzfZ;g^hBA
+z;14Klo2Z<M8jbkNDR((Yr9~{P(s;XvTh3$NH#4RcGOdttifn;$U;4aP<x2(3f%aD0
+zg>Z^E1J%D<g)q-C1j_crh4{I^I<#_3*z7QXZZ>d_W;Sz)2+vzs2Bi{h!r6I+9Z>OC
+zzTIA9ThTK&H~`uE($;e4=W5kK1=Iyl=f@=^6^kB_0&Psna+xyLK+|Cfu03K3{~N}i
+zFrvV_&zOaFxFu||X_Qr75ao$i^n&7ja&`I*!=QzdWF5U@Q4Q^|F$N0W`N{{<piNgc
+w_C7HR&6rT&2y1fu^+^Z)py1B@^cXW-H1HGGw^J~X`4RHm$Z8c3>+(?l16|6h%>V!Z
+
+delta 396
+zcmYk2&nv@W9LK$i&#0B#>>!5`2b7eP9F&8!*iF08;-VF$TsWA6@)ztO2RZE^S)uR6
+zVN4rgeuU9zzfNv*a8h`_&)PS~_w#vwUhmKQiKSezlq+(?LP7@Tf7{o~)>495<m0QZ
+zLyP<=XUInM$DYKJj3CDmGx<Dc4R>-9ZOb(Ry=wTD7B!W|W9_9_*3Pm4c3-fK%(a=d
+z>r1wfXp_BWg|FCmY;89>_dn2Q1ASIJL%=b~9n(lP)e7IUifjfAxbi@dT8D{8#*p0;
+zlfU!C4DM<>bE#JqpYd9qSq2<d=!H=vn=!0|R~8*`SB`Nc9W#@aH$sTN--yyXe%w`I
+rz#i3{*X;v&hHC$$bb70b6sWfj3)(L6KD)Zo5$3r;Rf>q}De?UWVltpl
+
+-- 
+2.39.1.windows.1
+
