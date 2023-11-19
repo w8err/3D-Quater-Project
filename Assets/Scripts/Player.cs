@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
 
     bool wDown;
     bool jDown;
+    bool fDown;
     bool iDown;
     bool sDown1;
     bool sDown2;
@@ -35,6 +36,7 @@ public class Player : MonoBehaviour
     bool isJump;
     bool isDodge;
     bool isSwap;
+    bool isFireReady = true;
 
     Vector3 moveVec;
     Vector3 dodgeVec;
@@ -43,8 +45,9 @@ public class Player : MonoBehaviour
     Animator anim;
 
     GameObject nearObject;
-    GameObject equipWeapon;
+    Weapon equipWeapon;
     int equipWeaponIndex = -1;
+    float fireDeley;
 
     void Awake() // 시작시 한 번 호출되는 함수
     {
@@ -58,6 +61,7 @@ public class Player : MonoBehaviour
         Move();
         Turn();
         Jump();
+        Attack();
         Dodge();
         Swap();
         Interation();
@@ -69,6 +73,7 @@ public class Player : MonoBehaviour
         vAxis = Input.GetAxisRaw("Vertical");
         wDown = Input.GetButton("Walk");
         jDown = Input.GetButtonDown("Jump");
+        fDown = Input.GetButtonDown("Firel");
         iDown = Input.GetButtonDown("Interation");
         sDown1 = Input.GetButtonDown("Swap1");
         sDown2 = Input.GetButtonDown("Swap2");
@@ -82,7 +87,7 @@ public class Player : MonoBehaviour
         if (isDodge)
             moveVec = dodgeVec;
 
-        if (isSwap)
+        if (isSwap || !isFireReady)
             moveVec = Vector3.zero;
 
         transform.position += moveVec * speed * (wDown ? 0.3f : 1f) * Time.deltaTime;
@@ -105,6 +110,24 @@ public class Player : MonoBehaviour
             anim.SetTrigger("doJump");
             isJump = true;
         }
+    }
+
+    void Attack()
+    {
+        if (equipWeapon == null)
+        {
+            return;
+        }
+        fireDeley += Time.deltaTime;
+        isFireReady = equipWeapon.rate < fireDeley;
+
+        if(fDown && isFireReady && !isDodge && !isSwap)
+        {
+            equipWeapon.Use();
+            anim.SetTrigger("doSwing");
+            fireDeley = 0;
+        }
+
     }
 
     void Dodge()
@@ -142,11 +165,11 @@ public class Player : MonoBehaviour
 
         if ((sDown1 || sDown2 || sDown3) && !isJump && !isDodge) {
             if (equipWeapon != null)
-                 equipWeapon.SetActive(false);
+                 equipWeapon.gameObject.SetActive(false);
 
             equipWeaponIndex = weaponIndex;
-            equipWeapon = weapons[weaponIndex];
-            equipWeapon.SetActive(true);
+            equipWeapon = weapons[weaponIndex].GetComponent<Weapon>();
+            equipWeapon.gameObject.SetActive(true);
 
             anim.SetTrigger("doSwap");
 
