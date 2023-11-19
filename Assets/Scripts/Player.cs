@@ -7,6 +7,26 @@ using static UnityEditor.Progress;
 
 public class Player : MonoBehaviour
 {
+    // int => 정수 값을 가지는 변수 1, 2, 3, 4, 5, -1, -2, -3, -99, 1000000
+    // float => 실수 값을 가지는 변수 1.2 , 3.55, 4.9978364, 3.14159273
+    // Boolean => 1 또는 0을 가지는 변수
+    
+    // public float speed; -> Player 또는 다른 스크립트에서 공용으로 사용하는 float형의 변수 speed
+    // public <-> private의 차이는 공유 유무다
+    
+    // 예를 들어, 무기강화기가 있다고 치자.
+    // 이 무기강화기는 +1강의 무기를 80% 확률로 강화에 성공하게 된다. 
+    // 무슨 요소가 필요할까? 
+    // 강화에 쓰일 아이템(이게 1강인지 체크하는 함수)
+    // 강화기(강화 유무를 체크하는 함수)
+    // 강화 성공 유무(80%확률을 체크해주는 함수) 
+    
+    // 강화에 쓰일 아이템이 +1강인지 체크하는 함수
+    // return값이 Boolean
+    
+    // 강화기에서 강화 성공을 체크해주는 함수
+    // return값은 int
+    
     public float speed;
     public GameObject[] weapons;
     public bool[] hasWeapons;
@@ -33,14 +53,16 @@ public class Player : MonoBehaviour
     bool sDown2;
     bool sDown3;
 
+    // initialize = 초기값
     bool isJump;
     bool isDodge;
     bool isSwap;
     bool isFireReady = true;
 
+    // Vector까지는 수학공부를 하는게 좋다. 
     Vector3 moveVec;
     Vector3 dodgeVec;
-
+    
     Rigidbody rigid;
     Animator anim;
 
@@ -49,13 +71,13 @@ public class Player : MonoBehaviour
     int equipWeaponIndex = -1;
     float fireDeley;
 
-    void Awake() // ���۽� �� �� ȣ��Ǵ� �Լ�
+    void Awake() // 시작시 한 번 호출되는 함수 = Method
     {
         rigid = GetComponent<Rigidbody>();
         anim = GetComponentInChildren<Animator>();
     }
 
-    void Update() // �� �����Ӹ��� ȣ��Ǵ� �Լ�
+    void Update() // 매 프레임마다 호출되는 함수
     {
         GetInput();
         Move();
@@ -64,23 +86,23 @@ public class Player : MonoBehaviour
         Attack();
         Dodge();
         Swap();
-        Interation();
+        Interaction();
     }
 
-    void GetInput()
+    void GetInput() // 플레이어의 키를 지정해주는 메소드
     {
         hAxis = Input.GetAxisRaw("Horizontal");
         vAxis = Input.GetAxisRaw("Vertical");
         wDown = Input.GetButton("Walk");
         jDown = Input.GetButtonDown("Jump");
-        fDown = Input.GetButtonDown("Firel");
-        iDown = Input.GetButtonDown("Interation");
+        fDown = Input.GetButtonDown("Fire1");
+        iDown = Input.GetButtonDown("Interaction");
         sDown1 = Input.GetButtonDown("Swap1");
         sDown2 = Input.GetButtonDown("Swap2");
         sDown3 = Input.GetButtonDown("Swap3");
     }
 
-    void Move()
+    void Move() // 플레이어의 움직임을 담당하는 메소드
     {
         moveVec = new Vector3(hAxis, 0, vAxis).normalized;
 
@@ -172,9 +194,7 @@ public class Player : MonoBehaviour
             equipWeapon.gameObject.SetActive(true);
 
             anim.SetTrigger("doSwap");
-
             isSwap = true;
-
             Invoke("SwapOut", 0.4f);
         }
     }
@@ -191,7 +211,7 @@ public class Player : MonoBehaviour
             weapons[weaponIndex].SetActive(true);
         }
     }
-    void Interation()
+    void Interaction()
     {
         if (iDown && nearObject != null && !isJump && !isDodge)
         {
@@ -234,7 +254,7 @@ public class Player : MonoBehaviour
                     break;
                 case Item.Type.Grenade:
                     grenades[hasGrenades].SetActive(true);
-                    hasGrenades += item.value;
+                    hasGrenades += item.value;  // hasGrenades = item의 value값 + hasGrenades
                     if (hasGrenades > maxHasGrenades)
                         hasGrenades = maxHasGrenades;
 
