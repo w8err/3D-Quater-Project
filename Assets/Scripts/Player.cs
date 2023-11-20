@@ -61,6 +61,7 @@ public class Player : MonoBehaviour
     bool isSwap;
     bool isReload;
     bool isFireReady = true;
+    bool isBorder;
 
     // Vector까지는 수학공부를 하는게 좋다. 
     Vector3 moveVec;
@@ -117,6 +118,7 @@ public class Player : MonoBehaviour
         if (isSwap || isReload || !isFireReady)
             moveVec = Vector3.zero;
 
+        if(!isBorder)
         transform.position += moveVec * speed * (wDown ? 0.3f : 1f) * Time.deltaTime;
 
         anim.SetBool("isRun", moveVec != Vector3.zero);
@@ -267,6 +269,23 @@ public class Player : MonoBehaviour
                 Destroy(nearObject);
             }
         }
+    }
+
+    void FreezeRotation()
+    {
+        rigid.angularVelocity = Vector3.zero;
+    }
+
+    void StopToWall()
+    {
+        Debug.DrawRay(transform.position, transform.forward * 5, Color.green);
+        isBorder = Physics.Raycast(transform.position, transform.forward, 5, LayerMask.GetMask("Wall"));
+    }
+
+    void FixedUpdate()
+    {
+        FreezeRotation();
+        StopToWall();
     }
     void OnCollisionEnter(Collision collision)
     {
