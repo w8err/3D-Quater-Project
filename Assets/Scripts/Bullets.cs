@@ -15,4 +15,11 @@ public class Bullets : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Wall") {
+            Destroy(gameObject);
+        }
+    }
 }
