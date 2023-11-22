@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    internal int damage;
+
     // Start is called before the first frame update
     void Start()
     {

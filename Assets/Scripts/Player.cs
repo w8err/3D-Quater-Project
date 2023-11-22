@@ -64,6 +64,7 @@ public class Player : MonoBehaviour
     bool isReload;
     bool isFireReady = true;
     bool isBorder;
+    bool isDamage;
 
     // Vector까지는 수학공부를 하는게 좋다. 
     Vector3 moveVec;
@@ -71,6 +72,7 @@ public class Player : MonoBehaviour
     
     Rigidbody rigid;
     Animator anim;
+    MeshRenderer[] meshs;
 
     GameObject nearObject;
     Weapon equipWeapon;
@@ -81,6 +83,7 @@ public class Player : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody>();
         anim = GetComponentInChildren<Animator>();
+        meshs = GetComponentsInChildren<MeshRenderer>();
     }
 
     void Update() // 매 프레임마다 호출되는 함수
@@ -325,9 +328,11 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.tag =="Item") {
+        if (other.tag == "Item")
+        {
             Item item = other.GetComponent<Item>();
-            switch(item.type) {
+            switch (item.type)
+            {
                 case Item.Type.Ammo:
                     ammo += item.value;
                     if (ammo > maxAmmo)
@@ -353,8 +358,32 @@ public class Player : MonoBehaviour
             }
             Destroy(other.gameObject);
         }
+        else if (other.tag == "EnemyBullet") {
+            if (!isDamage)
+{
+                Bullet enemyBullet = other.GetComponent<Bullet>();
+                health -= enemyBullet.damage;
+                StartCoroutine(OnDamage());
+            }
+        }
     }
 
+    IEnumerator OnDamage()
+    {
+        isDamage = true;
+        foreach(MeshRenderer mesh in meshs)
+        {
+            mesh.material.color = Color.yellow;
+        }
+
+        yield return new WaitForSeconds(1f);
+
+        isDamage = false;
+        foreach (MeshRenderer mesh in meshs) {
+            mesh.material.color = Color.white;
+        }
+
+    }
     void OnTriggerStay(Collider other)
     {
         if (other.tag == "Weapon")
