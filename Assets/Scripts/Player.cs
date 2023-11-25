@@ -65,6 +65,8 @@ public class Player : MonoBehaviour
     bool isFireReady = true;
     bool isBorder;
     bool isDamage;
+    bool isShop;
+
 
     // Vector까지는 수학공부를 하는게 좋다. 
     Vector3 moveVec;
@@ -193,7 +195,7 @@ public class Player : MonoBehaviour
         fireDeley += Time.deltaTime;
         isFireReady = equipWeapon.rate < fireDeley;
 
-        if(fDown && isFireReady && !isDodge && !isSwap)
+        if(fDown && isFireReady && !isDodge && !isSwap && !isShop)
         {
             equipWeapon.Use();
             anim.SetTrigger(equipWeapon.type == Weapon.Type.Melee ? "doSwing" : "doShot");
@@ -213,7 +215,7 @@ public class Player : MonoBehaviour
         if (ammo == 0)
             return;
 
-        if(rDown && !isJump && !isDodge && !isSwap && !isFireReady) {
+        if(rDown && !isJump && !isDodge && !isSwap && !isFireReady && !isShop) {
             anim.SetTrigger("doReload");
             isReload = true;
 
@@ -292,12 +294,19 @@ public class Player : MonoBehaviour
     {
         if (iDown && nearObject != null && !isJump && !isDodge)
         {
-            if (nearObject.tag == "Weapon") {
+            if (nearObject.tag == "Weapon")
+            {
                 Item item = nearObject.GetComponent<Item>();
                 int weaponIndex = item.value;
                 hasWeapons[weaponIndex] = true;
 
                 Destroy(nearObject);
+            }
+            else if (nearObject.tag == "Shop")
+            {
+                Shop shop = nearObject.GetComponent<Shop>();
+                shop.Enter(this);
+                isShop = true;
             }
         }
     }
@@ -363,18 +372,27 @@ public class Player : MonoBehaviour
 {
                 Bullet enemyBullet = other.GetComponent<Bullet>();
                 health -= enemyBullet.damage;
-                StartCoroutine(OnDamage());
+
+                bool isBossAtk = other.name == "Boss Melee Area";
+                StartCoroutine(OnDamage(isBossAtk));
             }
+
+            if (other.GetComponent<Rigidbody>() != null)
+                Destroy(other.gameObject);
+
         }
     }
 
-    IEnumerator OnDamage()
+    IEnumerator OnDamage(bool isBossAtk)
     {
         isDamage = true;
         foreach(MeshRenderer mesh in meshs)
         {
             mesh.material.color = Color.yellow;
         }
+
+        if (isBossAtk)
+            rigid.AddForce(transform.forward * -25, ForceMode.Impulse);
 
         yield return new WaitForSeconds(1f);
 
@@ -383,10 +401,13 @@ public class Player : MonoBehaviour
             mesh.material.color = Color.white;
         }
 
+        if (isBossAtk)
+            rigid.velocity = Vector3.zero;
+
     }
     void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Weapon")
+        if (other.tag == "Weapon" || other.tag == "Shop")
             nearObject = other.gameObject;
 
         Debug.Log(nearObject.gameObject.name);
@@ -396,5 +417,11 @@ public class Player : MonoBehaviour
     {
         if (other.tag == "Weapon")
             nearObject = null;
+        else if (other.tag == "Shop") {
+            Shop shop = nearObject.GetComponent<Shop>();
+            shop.Exit();
+            isShop = false;
+            nearObject = null;
+        }
     }
 }
